@@ -1,0 +1,94 @@
+# start applications
+alt + shift + Return
+    urxvt
+
+# manipulate windows
+
+# move
+alt + ctrl + {h,j,k,l}
+ wmv {-20 0,0 +20, 0 -20, +20 0} $(pfw)
+
+# kill session
+alt + shift + q
+    pkill xinit
+
+alt + f
+    centerw $(pfw)
+
+# resize
+alt + shift + {h,j,k,l}
+ wrs {-20 0,0 +20, 0 -20, +20 0} $(pfw)
+
+# close window
+alt + shift + c
+ killw $(pfw)
+
+# make fullscreen
+alt + space
+ fullscreen.sh $(pfw)
+
+# put window back/forward
+mod4 + s
+ chwso -i $(pfw)
+
+# cycle through windows
+alt + {j, k}
+ focus.sh {next,prev} 2>/dev/null && \
+ wmp -a $(wattr xy $(pfw)) && \
+ wmp -r $(wattr wh $(pfw))
+
+alt + h
+    w2left $(pfw)
+
+alt + l
+    w2right $(pfw)
+
+# focus the closest window in each direction
+mod4 + {h,j,k,l}
+ closest.sh {h,j,k,l}
+
+# put windows to the corners
+mod4 + {y,u,b,n,g}
+ corner.sh {tl,tr,bl,br,md}
+
+#
+# tile windows
+#
+
+mod4 + t
+ tile.sh
+
+alt + shift + f
+    firefox
+
+alt + shift + z
+    zathura
+
+#
+# media related
+#
+
+mod4 + l
+    mpc next
+
+mod4 + h
+    mpc prev
+
+mod4 + space
+    mpc toggle
+
+mod4 + j
+    amixer -q sset Master 5-
+
+mod4 + k
+    amixer -q sset Master 5+
+
+#
+# brightness
+#
+
+mod4 + shift + j
+    xbacklight -dec 10
+
+mod4 + shift + k
+    xbacklight -inc 10
