@@ -3,8 +3,8 @@
 exec 1>&2 2>/dev/null
 
 BOOTSTRAP=$(dirname `readlink -f $0`)
-XRESOURCES=$BOOTSTRAP/xresources
-PATH="$PATH:$BOOTSTRAP/bin"
+XRESOURCES=$BOOTSTRAP/.Xresources
+PATH="$PATH:$BOOTSTRAP/wm/bin"
 
 export XRESOURCES PATH BOOTSTRAP
 
@@ -16,7 +16,7 @@ xsetroot -cursor_name left_ptr
 
 xrdb -merge $XRESOURCES
 
-sxhkd -c $BOOTSTRAP/sxhkdrc &
+sxhkd -c $BOOTSTRAP/wm/sxhkdrc &
 focus_watcher.sh &
 fixkeys
 wew | yawee &
