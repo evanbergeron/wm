@@ -1,0 +1,10 @@
+#!/bin/sh
+
+centertw() {
+    NEW=$(lsw | tail -n 1)
+    wtf $NEW
+    chwb -c 0x9bb7cc -s 5 $NEW
+    centerw $NEW
+}
+
+centertw
